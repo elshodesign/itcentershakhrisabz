@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>itcentershakhrisabz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    header {
+      background: rgba(0,0,0,0.6);
+      padding: 1em;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      padding: 0;
+    }
+    nav a {
+      color: #28a745;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 2em;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1em;
+      margin-top: 1em;
+    }
+    .course {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: .3s;
+    }
+    .course:hover {
+      transform: translateY(-5px);
+      border: 1px solid #28a745;
+    }
+    footer {
+      background: rgba(0,0,0,0.6);
+      padding: 1em;
+      text-align: center;
+    }
+    button {
+      padding: 0.7em 1.2em;
+      background: #28a745;
+      border: none;
+      border-radius: 20px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #1e7e34;
+    }
+    .admin-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      color: #000;
+      padding: 2em;
+      border-radius: 5px;
+      width: 300px;
+    }
+    .close {
+      float: right;
+      cursor: pointer;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>itcentershakhrisabz</h1>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="goHome()">Bosh sahifa</a></li>
+        <li><a href="#" onclick="openLogin()">Kirish</a></li>
+        <li><a href="#" onclick="showQashqadaryo()">Qashqadaryo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="mainContent">
+    <h2>Bizning Kurslar</h2>
+    <section class="courses">
+      <div class="course"><h3>HTML asoslari</h3><button onclick="showCourse('HTML asoslari','HTML bu veb sahifalarning tuzilishini yaratish uchun asosiy kodlash tili. Siz matn, rasm, havola va boshqa elementlarni joylashtirishingiz mumkin.')">Kurs haqida</button></div>
+      <div class="course"><h3>CSS dizayn</h3><button onclick="showCourse('CSS dizayn','CSS yordamida sayt ko‘rinishi va dizayni yaratiladi. Ranglar, shriftlar va bloklarning joylashuvi sozlanadi.')">Kurs haqida</button></div>
+      <div class="course"><h3>JavaScript</h3><button onclick="showCourse('JavaScript','JavaScript – sahifaga interaktivlik qo‘shish uchun ishlatiladi. Masalan, tugmalar bosilganda natija ko‘rsatish yoki menyu ochish.')">Kurs haqida</button></div>
+      <div class="course"><h3>Kompyuter savodxonligi</h3><button onclick="showCourse('Kompyuter savodxonligi','Kompyuter asoslari, operatsion tizim, dasturlar va internetdan foydalanishni o‘rganasiz.')">Kurs haqida</button></div>
+      <div class="course"><h3>Matematika</h3><button onclick="showCourse('Matematika','Asosiy matematik tushunchalar: arifmetika, algebra, geometriya va masalalarni yechish usullari.')">Kurs haqida</button></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Telegram: <a href="https://t.me/jxusanov" target="_blank" style="color:#28a745;">@jxusanov</a></p>
+    <p>Tel: <a href="tel:+998886444404" style="color:#28a745;">+998 88 644 44 04</a></p>
+    <p><a href="https://t.me/Elshod1018" target="_blank"><button>Admin bilan Telegramda bog‘lanish</button></a></p>
+  </footer>
+
+  <a href="https://t.me/jxusanov" class="admin-button" target="_blank">ADMINGA MUROJAAT</a>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLogin()">&times;</span>
+      <h3>Hisobga kirish</h3>
+      <input id="loginInput" placeholder="Login"><br><br>
+      <input id="passwordInput" type="password" placeholder="Parol"><br><br>
+      <button onclick="showVideos()">Kirish</button>
+    </div>
+  </div>
+
+  <script>
+    function openLogin() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
+    function closeLogin() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+    function goHome() {
+      location.reload();
+    }
+    function showQashqadaryo() {
+      document.getElementById("mainContent").innerHTML = `
+        <h2>Qashqadaryo Bo‘limi</h2>
+        <ul>
+          <li><strong>O‘quv joyi:</strong> Shahrisabz shahri, Uztelecom binosi</li>
+          <li><strong>Grantlar:</strong> BIZNING KURS BITIRUVCHILARIMGA MAXSUS SERTIFIKAT BERILADI VA BIZNING KURS BARCHA DAVLAT VA NODAVLAT TASHKILOTLARDA AMAL QILADI.</li>
+        </ul>
+        <button onclick="goHome()">Orqaga qaytish</button>
+      `;
+    }
+    function showCourse(title, desc) {
+      closeLogin();
+      document.getElementById('mainContent').innerHTML = `
+        <h2>${title}</h2>
+        <p>${desc}</p>
+        <button onclick="showVideos()">Video darslarni ko‘rish</button>
+        <button onclick="goHome()">Orqaga</button>
+      `;
+    }
+    function showVideos() {
+      closeLogin();
+      document.getElementById("mainContent").innerHTML = `
+        <h2>Video Darslar</h2>
+        <div class="courses">
+          <div class="course"><h3>HTML Dars</h3><iframe width="100%" height="200" src="https://www.youtube.com/embed/N3cq0BHDMO8" allowfullscreen></iframe></div>
+          <div class="course"><h3>CSS Dars</h3><iframe width="100%" height="200" src="https://www.youtube.com/embed/PxX6tJArwOE" allowfullscreen></iframe></div>
+          <div class="course"><h3>JavaScript Dars</h3><iframe width="100%" height="200" src="https://www.youtube.com/embed/jS4aFq5-91M" allowfullscreen></iframe></div>
+          <div class="course"><h3>Kompyuter Savodxonligi</h3><iframe width="100%" height="200" src="https://www.youtube.com/embed/psqkV9oGBoM" allowfullscreen></iframe></div>
+          <div class="course"><h3>Matematika</h3><iframe width="100%" height="200" src="https://www.youtube.com/embed/FKcb7fK8s-o" allowfullscreen></iframe></div>
+        </div>
+        <button onclick="goHome()">Orqaga</button>`;
+    }
+  </script>
+</body>
+</html>
